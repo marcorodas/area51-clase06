@@ -1,9 +1,8 @@
-<ul>
-	<li><a routerLink="/">Login</a></li>
+<ul *ngIf="usuarioService.logginSuccess()">
 	<li><a routerLink="/home">Home</a></li>
 	<li><a routerLink="/listado">Listado</a></li>
 	<li><a routerLink="/nuevo">Nuevo</a></li>
 	<li><a routerLink="/edicion">Edición</a></li>
+  <li><a routerLink="" (click)="logout()">Logout</a></li>
 </ul>
-
 <router-outlet></router-outlet>

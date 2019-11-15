@@ -12,7 +12,7 @@ import { UsuariosService } from "./../usuarios.service";
 export class LoginComponent {
 
 	frmLogin: FormGroup
-  loginSuccess: boolean = true
+  showLoginError: boolean
 
 	constructor(private router: Router, private usuarioService: UsuariosService) { 
 		this.frmLogin = new FormGroup({
@@ -21,11 +21,15 @@ export class LoginComponent {
 		 }); 
 	}
 
-	irHome() {
-    this.loginSuccess = this.usuarioService.loginSuccess(this.frmLogin.value)
-		if(this.loginSuccess){
-			this.router.navigate(["/home"])
-		}
+  clearError(){
+    this.showLoginError = false;
+  }
+
+	onLoginSubmit() {
+    this.usuarioService.doLogin(this.frmLogin.value)
+    this.showLoginError = !this.usuarioService.logginSuccess()
+    if(this.showLoginError) return
+    this.router.navigate(["/listado"])
 	}
 
 }

@@ -1,1 +1,37 @@
-<p>nuevo works!</p>
+<div class="container pt-3">
+  <form [formGroup]="frmHome" class="d-flex flex-column border border-info rounded">
+    <div class="d-flex flex-wrap justify-content-center">
+      <div class="d-flex flex-column p-3">
+        <strong class="form-group text-uppercase">Requerimiento</strong>
+        <label class="form-group">Fecha de Requerimiento
+          <input type="date" class="form-control" formControlName="fechaRq" autofocus>
+        </label>
+        <label class="form-group">Nombre
+          <input type="text" class="form-control" 
+          placeholder="Nombre del paciente" formControlName="nombre">
+        </label>
+        <label>Apellido
+          <input type="text" class="form-control"  
+          placeholder="Apellido del paciente" formControlName="apellido">
+        </label> 
+      </div>
+      <div class="d-flex flex-column p-3">
+        <strong class="form-group text-uppercase">Atención</strong>
+        <label class="form-group">Fecha de Atención:
+          <input type="date" class="form-control" formControlName="fechaAtencion">
+        </label>
+        <label class="form-group">Médico
+          <input type="text" class="form-control" 
+          placeholder="Nombre completo" formControlName="medico">
+        </label>
+        <label>Paramédico
+          <input type="text" class="form-control" 
+          placeholder="Nombre completo" formControlName="paramedico">
+        </label>
+      </div>
+    </div>   
+    <div class="d-flex justify-content-center mb-3">
+      <button class="btn btn-info">Guardar</button>  
+    </div>
+  </form>
+</div>

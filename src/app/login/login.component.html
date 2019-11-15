@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container mt-5">
 	<div class="card">
-		<img src="" class="card-img-top logo">
-		<form class="card-body" [formGroup]="frmLogin">
+    <div class="card-header">
+      <span class="font-weight-bold text-primary">Login</span>
+    </div>
+		<form class="card-body" [formGroup]="frmLogin" (ngSubmit)="onLoginSubmit()">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Email"
-        formControlName="correo" name="correo" autofocus>
+				<input type="text" class="form-control" placeholder="Email" (keydown)="clearError()"
+        formControlName="correo" (keyup.enter)="pass.focus()" autofocus>
 				<div class="text-danger" *ngIf="frmLogin.get('correo').touched">
 					<span *ngIf="frmLogin.get('correo').hasError('required')">
             * Se requiere un correo
@@ -15,16 +17,16 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" placeholder="Contraseña"
-        formControlName="contrasena" name="contrasena">
+				<input type="password" class="form-control" #pass placeholder="Contraseña" (keydown)="clearError()"
+        formControlName="contrasena">
 				<span class="text-danger" *ngIf="frmLogin.get('contrasena').hasError('required') && frmLogin.get('contrasena').touched">
             * Se requiere una contraseña
           </span>
 			</div>
 			<div class="d-flex justify-content-center">
-				<button type="button" class="btn btn-primary" [disabled]="frmLogin.invalid" (click)="irHome()">Ingresar</button>
+				<button class="btn btn-primary" [disabled]="frmLogin.invalid">Ingresar</button>
 			</div>
-			<div *ngIf="!loginSuccess">
+			<div *ngIf="showLoginError">
 				<span class="text-danger d-flex justify-content-center">
             Usuario y/o contraseña no válidos
           </span>
