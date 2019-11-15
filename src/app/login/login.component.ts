@@ -11,17 +11,19 @@ import { UsuariosService } from "./../usuarios.service";
 })
 export class LoginComponent {
 
-	grupo: FormGroup
+	frmLogin: FormGroup
+  loginSuccess: boolean = true
 
 	constructor(private router: Router, private usuarioService: UsuariosService) { 
-		this.grupo = new FormGroup({
+		this.frmLogin = new FormGroup({
 			correo: new FormControl(null, [Validators.required, Validators.email]),
 			contrasena: new FormControl(null, Validators.required)
 		 }); 
 	}
 
 	irHome() {
-		if(this.usuarioService.loginSuccess(this.grupo.value)){
+    this.loginSuccess = this.usuarioService.loginSuccess(this.frmLogin.value)
+		if(this.loginSuccess){
 			this.router.navigate(["/home"])
 		}
 	}
