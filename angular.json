@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ClaseRF": {
+    "appRutas": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ClaseRF",
+            "outputPath": "dist/appRutas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,10 +25,9 @@
             ],
             "styles": [
               "src/styles.css",
-  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -65,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ClaseRF:build"
+            "browserTarget": "appRutas:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ClaseRF:build:production"
+              "browserTarget": "appRutas:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ClaseRF:build"
+            "browserTarget": "appRutas:build"
           }
         },
         "test": {
@@ -113,15 +112,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ClaseRF:serve"
+            "devServerTarget": "appRutas:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ClaseRF:serve:production"
+              "devServerTarget": "appRutas:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "ClaseRF"
+  "defaultProject": "appRutas"
 }

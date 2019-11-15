@@ -1,38 +1,47 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RegistroComponent } from './registro/registro.component';
-import { LoginComponent } from './login/login.component';
+import { EdicionComponent } from './edicion/edicion.component';
 import { HomeComponent } from './home/home.component';
 import { ListadoComponent } from './listado/listado.component';
+import { LoginComponent } from './login/login.component';
+import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
-import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component'
+import { ReactiveFormsModule } from "@angular/forms";
 
-import { Route, RouterModule } from '@angular/router';
+import { UsuariosService } from "./usuarios.service";
 
-const rutas: Route[] = [
-  {path: "", component: LoginComponent},
-  {path: "home", component: HomeComponent},
-  {path: "registro", component: RegistroComponent},
-  {path: "listado", component: ListadoComponent},
-  {path: "nuevo", component: NuevoComponent},
-  /* {path: "**", component: "NoEncontradoComponent"} */
-  {path: "**", redirectTo: "home"}
+// http://midominio.com
+// http://midominio.com/home
+
+const rutas: Routes = [
+	{ path: "", component: LoginComponent },
+	{ path: "home", component: HomeComponent },
+	{ path: "listado", component: ListadoComponent },
+	{ path: "edicion", component: EdicionComponent },
+	{ path: "nuevo", component: NuevoComponent },
+	/* { path: "**", component: NoEncontradoComponent } */
+	{ path: "**", redirectTo: "home" }
 ]
 
+
 @NgModule({
-  declarations: [
-    AppComponent, RegistroComponent, LoginComponent,
-    HomeComponent, ListadoComponent, NuevoComponent, NoEncontradoComponent
-  ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(rutas)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		LoginComponent,
+		HomeComponent,
+		ListadoComponent,
+		EdicionComponent,
+		NuevoComponent,
+		NoEncontradoComponent
+	],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(rutas),
+		ReactiveFormsModule
+	],
+	providers: [UsuariosService],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="card">
+    <img src="" class="card-img-top logo">
+    <form class="card-body" [formGroup]="grupo">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email"
+        formControlName="correo" name="correo" autofocus>
+        <div class="text-danger">
+          <span *ngIf="(grupo.get('correo').hasError('email') || grupo.get('correo').hasError('required')) && grupo.get('correo').touched">
+            * Se requiere un correo
+          </span>  
+        </div>      
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Contraseña"
+        formControlName="contrasena" name="contrasena">
+          <span class="text-danger" *ngIf="grupo.get('contrasena').hasError('required') && grupo.get('contrasena').touched">
+            * Se requiere una contraseña
+          </span>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" (click)="irHome()">Ingresar</button>     
+      </div>
+    </form>
+  </div>
