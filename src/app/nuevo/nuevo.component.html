@@ -4,34 +4,76 @@
       <div class="d-flex flex-column p-3">
         <strong class="form-group text-uppercase">Requerimiento</strong>
         <label class="form-group">Fecha de Requerimiento
-          <input type="date" class="form-control" formControlName="fechaRq" autofocus>
+          <input type="date" class="form-control" 
+          (keyup.enter)="nombreElem.focus()"
+          (change)="onChangeFechaRq()"
+          formControlName="fechaRq" autofocus>
+          <span *ngIf="fechaRq.touched && fechaRq.hasError('required')">
+            * Campo requerido
+          </span>
+          <span *ngIf="fechaRq.touched && fechaRq.hasError('fechaError')">
+            * No pude ser después de la atención ({{fechaAtencion.value | date:'dd/MM/yyyy'}})
+          </span>
         </label>
         <label class="form-group">Nombre
-          <input type="text" class="form-control" 
+          <input type="text" class="form-control" #nombreElem
+          (keyup.enter)="apellidoElem.focus()"
           placeholder="Nombre del paciente" formControlName="nombre">
+          <span *ngIf="nombre.touched && nombre.hasError('required')">
+            * Campo requerido
+          </span>
         </label>
         <label>Apellido
-          <input type="text" class="form-control"  
+          <input type="text" class="form-control" #apellidoElem
+          (keyup.enter)="fechaAtencionElem.focus()"
           placeholder="Apellido del paciente" formControlName="apellido">
+          <span *ngIf="apellido.touched && apellido.hasError('required')">
+            * Campo requerido
+          </span>
         </label> 
       </div>
       <div class="d-flex flex-column p-3">
         <strong class="form-group text-uppercase">Atención</strong>
         <label class="form-group">Fecha de Atención:
-          <input type="date" class="form-control" formControlName="fechaAtencion">
+          <input type="date" class="form-control" #fechaAtencionElem
+          (keyup.enter)="medicoElem.focus()"
+          (change)="onChangeFechaAtencion()"
+          formControlName="fechaAtencion">
+          <span *ngIf="fechaAtencion.touched && fechaAtencion.hasError('required')">
+            * Campo requerido
+          </span>
+          <span *ngIf="fechaAtencion.touched && fechaAtencion.hasError('fechaError')">
+            * No pude ser antes del requerimiento ({{fechaRq.value | date:'dd/MM/yyyy'}})
+          </span>
         </label>
         <label class="form-group">Médico
-          <input type="text" class="form-control" 
+          <input type="text" class="form-control" #medicoElem
+          (keyup.enter)="paramedicoElem.focus()"
           placeholder="Nombre completo" formControlName="medico">
+          <span *ngIf="medico.touched && medico.hasError('required')">
+            * Campo requerido
+          </span>
         </label>
         <label>Paramédico
-          <input type="text" class="form-control" 
+          <input type="text" class="form-control" #paramedicoElem
+          (keyup.enter)="btnGuardar.click()"
           placeholder="Nombre completo" formControlName="paramedico">
+          <span *ngIf="paramedico.touched && paramedico.hasError('required')">
+            * Campo requerido
+          </span>
         </label>
       </div>
     </div>   
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-info" type="button" #btnGuardar 
+      [disabled]="frmHome.invalid" (click)="onSubmit()">
+        Guardar
+      </button>
+    </div>
     <div class="d-flex justify-content-center mb-3">
-      <button class="btn btn-info">Guardar</button>  
+      <div class="alert alert-success mt-4" *ngIf="showMsgSaveOk">
+        ¡Registro guardado correctamente!
+      </div>
     </div>
   </form>
 </div>

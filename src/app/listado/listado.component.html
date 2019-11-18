@@ -1,18 +1,23 @@
 <div class="container pt-3">
   <div class="d-flex flex-column border border-info rounded">
-    <div class="d-flex justify-content-center">      
-      <div class="d-flex flex-column p-3">
-        <strong>Nombre</strong>
-        <span>Primer nombre</span>
-      </div>
-      <div class="d-flex flex-column p-3">
-        <strong>Apellido</strong>
-        <span>Primer nombre</span>
-      </div>
-      <div class="d-flex flex-column p-3">
-        <strong class="text-nowrap">Fecha de Atención</strong>
-        <span>Atencion</span>
-      </div>
-    </div>
+    <table class="table table-striped table-hover mb-0">
+      <thead>
+        <tr class="table-info">
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Fecha de Atención</th>
+        </tr>
+      </thead>
+      <tr *ngIf="historiaService.historias.length == 0">
+        <td class="text-center" colspan="3">
+          Sin atenciones registradas
+        </td>
+      </tr>
+      <tr *ngFor="let historia of historiaService.historias">
+        <td>{{historia.nombre}}</td>
+        <td>{{historia.apellido}}</td>
+        <td>{{historia.fechaAtencion}}</td>
+      </tr>
+    </table>  
   </div>
 </div>

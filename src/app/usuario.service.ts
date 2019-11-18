@@ -2,7 +2,7 @@ export class Usuario{
   correo: string
 }
 
-export class UsuariosService {
+export class UsuarioService {
 
   private loggedUser: Usuario
   private userList = [

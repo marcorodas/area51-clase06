@@ -1,3 +1,8 @@
 .container{
   width: fit-content
 }
+span{
+  color: #dc3545;
+  float: left;
+  width: 200px;
+}

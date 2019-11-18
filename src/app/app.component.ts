@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UsuariosService } from "./usuarios.service";
+import { UsuarioService } from "./usuario.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { UsuariosService } from "./usuarios.service";
 })
 export class AppComponent {
 
-  constructor(private router: Router, private usuarioService: UsuariosService) {}
+  constructor(private router: Router, private usuarioService: UsuarioService) {}
 
   logout(){
     this.usuarioService.logout()

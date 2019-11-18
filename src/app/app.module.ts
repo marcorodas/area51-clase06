@@ -10,7 +10,8 @@ import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { UsuariosService } from "./usuarios.service";
+import { UsuarioService } from "./usuario.service";
+import { HistoriaService } from './historia.service';
 
 // http://midominio.com
 // http://midominio.com/home
@@ -22,7 +23,7 @@ const rutas: Routes = [
 	{ path: "edicion", component: EdicionComponent },
 	{ path: "nuevo", component: NuevoComponent },
 	/* { path: "**", component: NoEncontradoComponent } */
-	{ path: "**", redirectTo: "home" }
+	{ path: "**", redirectTo: "" }
 ]
 
 
@@ -41,7 +42,7 @@ const rutas: Routes = [
 		RouterModule.forRoot(rutas),
 		ReactiveFormsModule
 	],
-	providers: [UsuariosService],
+	providers: [UsuarioService, HistoriaService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
